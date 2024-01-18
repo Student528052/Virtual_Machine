@@ -1,14 +1,13 @@
 #include "VM_temp.h"
+#include "types_and_data.h"
 #include<iostream>
 
 
 //template
 int main(void){
-
-	auto temp = VM::VM_temp(); 
-
-	temp.print(); 
-
-	return 0; 
-
+    VM::VM_temp vm;
+    std::vector<i32> prog{10, 7, 0x40000001,0x40000000};
+    vm.loadProg(prog);
+    vm.run();
+    return 0;
 }
