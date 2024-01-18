@@ -43,15 +43,19 @@ void VM::VM_temp::primitive() {
         case ADD:
             memory[sp - 1] += memory[sp];
             sp--;
+	    break; 
         case SUB:
             memory[sp - 1] -= memory[sp];
             sp--;
+	    break;
         case MUL:
             memory[sp - 1] *= memory[sp];
             sp--;
+	    break; 
         case DIV:
             memory[sp - 1] /= memory[sp];
             sp--;
+	    break; 
     }
 }
 
@@ -66,7 +70,7 @@ void VM::VM_temp::run() {
 }
 
 void VM::VM_temp::loadProg(std::vector<i32> prog) {
-    for (i32 i = 0; i < prog.size(); ++i) {
+    for (i32 i = 0; i < static_cast<int32_t>( prog.size()); ++i) {
         memory[pc + i] = prog[i];
     }
 }
