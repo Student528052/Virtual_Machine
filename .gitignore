@@ -34,4 +34,6 @@
 Debug/
 compile-commands.json
 cmake-build-debug/
+cmake-build-wsl-clang/
+cmake-build-wsl-gcc/
 
