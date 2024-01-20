@@ -1,7 +1,3 @@
-//
-// Created by Lenovo on 1/20/2024.
-//
-
 #ifndef VIRTUAL_MACHINE_RNP_H
 #define VIRTUAL_MACHINE_RNP_H
 #include <iostream>
@@ -14,6 +10,7 @@ enum State : byte {
     START,
     READCHAR,
     READBLOCK,
+    DUMP,
     END
 };
 
@@ -25,4 +22,5 @@ class RNP {
 public:
     strings rnp(std::string s);
 };
+
 #endif //VIRTUAL_MACHINE_RNP_H
