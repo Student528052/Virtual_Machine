@@ -17,7 +17,7 @@ enum State : byte {
     END
 };
 
-class Lexer {
+class RNP {
     bool my_isspace(char c);
     bool isspecial(char c);
     bool isgroup(char c);
