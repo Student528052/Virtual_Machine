@@ -17,5 +17,6 @@ enum{
     MUL,
     DIV,
     OP_AND,
-    OP_OR
+    OP_OR, 
+    LOD, 
 };

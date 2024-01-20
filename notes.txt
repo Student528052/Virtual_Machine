@@ -1,5 +1,0 @@
-Main changes for us to make: 
-use 3 bits for instruction set  instead of 2
-figure out what to use them for
-use switch cases for checking instruction set (dat)
-ENUMS for the instructions

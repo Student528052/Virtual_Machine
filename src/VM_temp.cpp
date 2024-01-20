@@ -1,5 +1,7 @@
 #include"VM_temp.h"
 #include "types_and_data.h"
+#include <iostream>
+#include <string>
 
 VM::VM_temp::VM_temp() {
     //Reserve space for 1000000 elements in the memory vector
@@ -80,5 +82,13 @@ void VM::VM_temp::run() {
 void VM::VM_temp::loadProg(std::vector<i32> prog) {
     for (i32 i = 0; i < static_cast<int32_t>( prog.size()); ++i) {
         memory[pc + i] = prog[i];
+    }
+}
+void VM::VM_temp::loadProg(int argc, char* argv[] ){
+    for (i32 i = 0; i < argc ; ++i) {
+	    std::cout << "Read" << "\n"; 
+
+        memory[pc + i] = std::atoi(argv[i]);
+
     }
 }

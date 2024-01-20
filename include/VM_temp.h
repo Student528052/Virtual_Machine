@@ -11,6 +11,7 @@ namespace VM{
         VM_temp();
         void run();
         void loadProg(std::vector<i32> prog);
+	void loadProg(int argc, char* argv[]); 
 
     private:
         i32 pc = 100;
