@@ -55,7 +55,15 @@ void VM::VM_temp::primitive() {
         case DIV:
             memory[sp - 1] /= memory[sp];
             sp--;
-	    break; 
+	    break;
+        case OP_AND:
+            memory[sp - 1] = memory[sp-1] & memory[sp];
+            sp--;
+            break;
+        case OP_OR:
+            memory[sp - 1] = memory[sp-1] | memory[sp];
+            sp--;
+            break;
     }
 }
 
