@@ -1,11 +1,11 @@
 #Basic initalization
 cmake_minimum_required(VERSION 3.21)
 project(Virtual_Machine VERSION 1.0)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDART_REQUIRED ON)
 add_executable(V_machine)
 set(base_target V_machine)
-
+set(binary_target Binary)
 ##TODO: change this so that it doesn't use global recursion for source files(bad practice)
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 

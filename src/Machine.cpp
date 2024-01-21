@@ -1,34 +1,34 @@
-#include"VM_temp.h"
+#include"Machine.h"
 #include "types_and_data.h"
 #include <iostream>
 #include <string>
 
-VM::VM_temp::VM_temp() {
+VM::Machine::Machine() {
     //Reserve space for 1000000 elements in the memory vector
     memory.reserve(1000000);
 }
 
-i32 VM::VM_temp::GetType(i32 instruction) {
+i32 VM::Machine::GetType(i32 instruction) {
     i32 type = 0xc0000000;
     type = (type & instruction) >> 30;
     return type;
 }
 
-i32 VM::VM_temp::GetData(i32 instruction) {
+i32 VM::Machine::GetData(i32 instruction) {
     i32 data = 0x3fffffff;
     data = (data & instruction);
     return data;
 }
 
-void VM::VM_temp::fetch() {
+void VM::Machine::fetch() {
     pc++;
 }
 
-void VM::VM_temp::decode() {
+void VM::Machine::decode() {
     typ = GetType(memory[pc]);
     dat = GetData(memory[pc]);
 }
-void VM::VM_temp::execute() {
+void VM::Machine::execute() {
     if(typ == POS_INT || typ == NEG_INT){
         sp++;
         memory[sp] = dat;
@@ -37,7 +37,7 @@ void VM::VM_temp::execute() {
     }
 }
 
-void VM::VM_temp::primitive() {
+void VM::Machine::primitive() {
     switch(dat){
         case HALT:
             running = 0;
@@ -69,7 +69,7 @@ void VM::VM_temp::primitive() {
     }
 }
 
-void VM::VM_temp::run() {
+void VM::Machine::run() {
     pc -= 1; //obqsni
     while(running == 1){
         fetch();
@@ -79,12 +79,12 @@ void VM::VM_temp::run() {
     }
 }
 
-void VM::VM_temp::loadProg(std::vector<i32> prog) {
+void VM::Machine::loadProg(std::vector<i32> prog) {
     for (i32 i = 0; i < static_cast<int32_t>( prog.size()); ++i) {
         memory[pc + i] = prog[i];
     }
 }
-void VM::VM_temp::loadProg(int argc, char* argv[] ){
+void VM::Machine::loadProg(int argc, char* argv[] ){
     for (i32 i = 0; i < argc ; ++i) {
 	    std::cout << "Read" << "\n"; 
 

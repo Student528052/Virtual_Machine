@@ -6,9 +6,9 @@
 typedef int32_t i32;
 
 namespace VM{
-    class VM_temp{
+    class Machine{
     public:
-        VM_temp();
+        Machine();
         void run();
         void loadProg(std::vector<i32> prog);
 	void loadProg(int argc, char* argv[]); 

@@ -10,6 +10,15 @@ enum{
     NEG_INT
 };
 
+//TODO: change the names to fit for other (custom)syntax
+enum{
+	PLUS = '+',
+	MINUS = '-', 
+	MULTI = '*', 
+	DIVIDE = '/',
+	L_BRAC = '(',
+	R_BRAC = ')'
+};
 enum{
     HALT = 0,
     ADD,

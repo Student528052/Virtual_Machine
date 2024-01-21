@@ -14,6 +14,7 @@ enum State : byte {
     START,
     READCHAR,
     READBLOCK,
+    DUMP, 
     END
 };
 
