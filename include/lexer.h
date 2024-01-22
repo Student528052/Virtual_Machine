@@ -1,16 +1,16 @@
-#include <cstdio>
 #include <iostream>
-#include <stdio.h>
-#include <string_view>
-#include <memory>
-
-//TODO: add a lexer function/class
-//
-//
+#include <vector>
+//TODO: add documentation
 namespace VM{
 	class lexer{
 		public: 
+			std::vector<std::string> lex ( std::string s); 
 		private: 
+			bool checkspace(char c); 
+			bool checkgroup(char c); 
+			char end; 
+			char begin; 
+
 
 	
 	}; 

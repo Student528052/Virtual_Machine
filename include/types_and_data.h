@@ -11,6 +11,7 @@ enum{
 };
 
 //TODO: change the names to fit for other (custom)syntax
+//TODO: add documentation for the symbols (this file should be used by both machine and lexer classes. 
 enum{
 	PLUS = '+',
 	MINUS = '-', 
@@ -28,4 +29,13 @@ enum{
     OP_AND,
     OP_OR, 
     LOD, 
+};
+enum State: char{
+	START, 
+	READCHAR, 
+	READBLOCK, 
+	SKIP, 
+	DUMP, 
+	END
+
 };
