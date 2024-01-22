@@ -10,15 +10,14 @@ enum{
     NEG_INT
 };
 
-//TODO: change the names to fit for other (custom)syntax
-//TODO: add documentation for the symbols (this file should be used by both machine and lexer classes. 
+//
+//TODO: make more syntax symbols for each instruction.(optional) 
 enum{
 	PLUS = '+',
 	MINUS = '-', 
 	MULTI = '*', 
 	DIVIDE = '/',
-	L_BRAC = '(',
-	R_BRAC = ')'
+	
 };
 enum{
     HALT = 0,
