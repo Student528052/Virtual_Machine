@@ -1,18 +1,44 @@
+/* Copyright (C) 
+ * 2024 - Aleksandar Dikov (528052)
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ * 
+ */
+
 #include "Machine.h"
-#include "types_and_data.h"
-#include<iostream>
+#include <fstream>
+#include <vector>
+#include"assembler.h"
 
-
-//template
 int main(int argc, char * argv[]){
-    VM::Machine vm;
-    /*
-    std::vector<i32> prog{4, 5, 1073741829,1073741824};
-    vm.loadProg(prog);
-    */
-    
-    vm.loadProg(argc, argv); 
+	(void)argc; 
+	VM::assembler assembler(argv[1]); 
+	
+	auto name = assembler.getFileName(); 
 
+	std::ifstream iss(name, std::ios::binary);
+
+	uint32_t inst; 
+	std::vector<uint32_t> prog; 
+
+	while (iss.read((char*)&inst, sizeof(inst))) {
+		prog.push_back(inst);
+
+	}
+
+    VM::Machine vm;
+    vm.loadProg(prog);
 
     vm.run();
     return 0;

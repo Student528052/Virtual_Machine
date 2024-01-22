@@ -8,14 +8,14 @@ VM::Machine::Machine() {
     memory.reserve(1000000);
 }
 
-i32 VM::Machine::GetType(i32 instruction) {
-    i32 type = 0xc0000000;
+uint32_t VM::Machine::GetType(uint32_t instruction) {
+    uint32_t type = 0xc0000000;
     type = (type & instruction) >> 30;
     return type;
 }
 
-i32 VM::Machine::GetData(i32 instruction) {
-    i32 data = 0x3fffffff;
+uint32_t VM::Machine::GetData(uint32_t instruction) {
+    uint32_t data = 0x3fffffff;
     data = (data & instruction);
     return data;
 }
@@ -70,7 +70,7 @@ void VM::Machine::primitive() {
 }
 
 void VM::Machine::run() {
-    pc -= 1; //obqsni
+    pc -= 1; 
     while(running == 1){
         fetch();
         decode();
@@ -79,13 +79,14 @@ void VM::Machine::run() {
     }
 }
 
-void VM::Machine::loadProg(std::vector<i32> prog) {
-    for (i32 i = 0; i < static_cast<int32_t>( prog.size()); ++i) {
+void VM::Machine::loadProg(std::vector<uint32_t> prog) {
+
+    for (int32_t i = 0; i < static_cast<int32_t>( prog.size()); ++i) {
         memory[pc + i] = prog[i];
     }
 }
 void VM::Machine::loadProg(int argc, char* argv[] ){
-    for (i32 i = 0; i < argc ; ++i) {
+    for (int32_t i = 0; i < argc ; ++i) {
 	    std::cout << "Read" << "\n"; 
 
         memory[pc + i] = std::atoi(argv[i]);

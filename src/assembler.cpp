@@ -5,7 +5,8 @@
 #include <fstream>
 #include <type_traits>
 #include <vector>
-//constructor that opens a file and assembles (compiles) the syntax into instructions
+
+
 VM::assembler::assembler(std::string & fname){
 	//create input files
 	std::ifstream file; 
@@ -36,13 +37,16 @@ VM::assembler::assembler(std::string & fname){
 
 }
 
-VM::assembler::assembler(char * fname){
+VM::assembler::assembler(const char * fname):m_fname{fname}{
+	std::string sfname{m_fname}; 
+	sfname += ".out.bin";
+
 
 	//create input files
 	std::ifstream file; 
 	file.open(fname); 
 
-	if(file.is_open())  throw std::invalid_argument("File not found") ; 
+	if(!file.is_open())  throw std::invalid_argument("File not found") ; 
 
 	std::string line; 
 	std::string buf; 
@@ -56,15 +60,17 @@ VM::assembler::assembler(char * fname){
 	std::vector<uint32_t> instructions = compile_instructions( tokens); 
 
 
-	//write to output
-	std::ofstream output; 
-	//cant use char * as a filename
-	output.open("argument_output.out.bin", std::ios::binary); //output file in binary format
+	//output
+	m_file = std::fopen(sfname.data(), "wb"); 
+
 	
-	for (uint32_t i = 0; i < instructions.size(); i++) {
-		output.write(reinterpret_cast<char *>(&instructions[i]), sizeof(uint32_t));
-	}
-	output.close();
+
+    for (uint32_t i = 0; i < instructions.size(); i++) {
+        // Write each element of the vector to the file
+        std::fwrite(&instructions[i], sizeof(uint32_t), 1, m_file);
+    }
+
+    std::fclose(m_file); 
 }
 
 
@@ -114,4 +120,7 @@ uint32_t  VM::assembler::map_to_intstuction(char & c){
 	return -1; 
 
 }
+
+std::FILE * VM::assembler::getFile(){return m_file; }
+std::string  VM::assembler::getFileName(){return m_fname + ".out.bin";}
 

@@ -52,7 +52,6 @@ std::vector<std::string> VM::lexer::lex(std::string str){
 
 			case READBLOCK: 
 			if(str[i] == begin && str[i] != '"'){
-				//TODO: figure out what balance does 
 				balance ++; 
 				buf[j] = str[i];
 				j++;

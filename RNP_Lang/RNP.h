@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 
+//TODO: ask stiliyan about this. 
+//we have all the files nessesary.(machine, assembler and lexer)
 typedef uint8_t byte;
 typedef std::vector<std::string> strings;
 
