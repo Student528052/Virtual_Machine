@@ -87,7 +87,8 @@ void VM::Machine::loadProg(std::vector<uint32_t> prog) {
 }
 void VM::Machine::loadProg(int argc, char* argv[] ){
     for (int32_t i = 0; i < argc ; ++i) {
-	    std::cout << "Read" << "\n"; 
+	    //testing
+	    //std::cout << "Read" << "\n"; 
 
         memory[pc + i] = std::atoi(argv[i]);
 

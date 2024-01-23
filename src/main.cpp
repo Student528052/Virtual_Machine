@@ -22,7 +22,12 @@
 #include"assembler.h"
 
 int main(int argc, char * argv[]){
-	(void)argc; 
+
+    	VM::Machine vm;
+	//if you want to use command line arguments 
+	if(argc >= 2) vm.loadProg(argc, argv); 
+
+	else{
 	VM::assembler assembler(argv[1]); 
 	
 	auto name = assembler.getFileName(); 
@@ -36,9 +41,8 @@ int main(int argc, char * argv[]){
 		prog.push_back(inst);
 
 	}
-
-    VM::Machine vm;
     vm.loadProg(prog);
+	}
 
     vm.run();
     return 0;
